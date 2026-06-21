@@ -616,3 +616,172 @@ body {
   text-overflow: ellipsis;
   max-width: 60px;
 }
+
+/* ─── Mobile Responsiveness ─────────────────────────────────────────────────── */
+
+/* Layout & Main Panels */
+@media (max-width: 1024px) {
+  .app-container {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: 100vh;
+    padding: 16px;
+    gap: 16px;
+  }
+  .form-container {
+    height: auto;
+    overflow-y: visible;
+    padding: 16px;
+  }
+  .main-content {
+    height: auto;
+    overflow-y: visible;
+    gap: 16px;
+  }
+  .bottom-panels {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    gap: 16px;
+  }
+  .map-wrapper {
+    height: 380px; /* Explicit height on mobile so map container doesn't collapse */
+  }
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── Analytics Dashboard Classes ─── */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dashboard-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.dashboard-sidebar {
+  width: 210px;
+  min-width: 210px;
+  background: rgba(15, 23, 42, 0.85);
+  border-right: 1px solid rgba(51, 65, 85, 0.6);
+  padding: 20px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.dashboard-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 28px 32px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(51, 65, 85, 0.6) transparent;
+}
+
+@media (max-width: 768px) {
+  .dashboard-body {
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  .dashboard-sidebar {
+    width: 100%;
+    min-width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba(51, 65, 85, 0.6);
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 10px;
+    gap: 8px;
+    white-space: nowrap;
+    scrollbar-width: none;
+    align-items: center;
+  }
+  .dashboard-sidebar::-webkit-scrollbar {
+    display: none;
+  }
+  .dashboard-content {
+    padding: 16px;
+    overflow-y: visible; /* Main container handles scrolling on mobile */
+  }
+  .sidebar-section-header, .sidebar-divider, .sidebar-info-card {
+    display: none !important;
+  }
+}
+
+/* ─── Responsive Chart Card & Grids ─── */
+.chart-card {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(51, 65, 85, 0.6);
+  border-radius: 14px;
+  padding: 20px 20px 12px;
+  grid-column: span 1;
+}
+
+.chart-card.span-2 {
+  grid-column: span 2;
+}
+
+.form-fields-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.scores-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.dashboard-topbar-subtitle {
+  font-size: 11px;
+  color: #475569;
+}
+
+@media (max-width: 1024px) {
+  .form-fields-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .chart-card.span-2 {
+    grid-column: span 1;
+  }
+  .scores-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .form-fields-grid {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-topbar-subtitle {
+    display: none !important;
+  }
+}
+
+

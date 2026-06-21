@@ -205,13 +205,7 @@ const SectionTitle = ({ title, subtitle, Icon }) => (
 
 // ─── Chart Card ──────────────────────────────────────────────────────────────
 const ChartCard = ({ title, children, span = 1 }) => (
-  <div style={{
-    background: 'rgba(15,23,42,0.7)',
-    border: '1px solid rgba(51,65,85,0.6)',
-    borderRadius: 14,
-    padding: '20px 20px 12px',
-    gridColumn: span === 2 ? 'span 2' : 'span 1',
-  }}>
+  <div className={`chart-card ${span === 2 ? 'span-2' : ''}`}>
     <div style={{ fontSize: 13, fontWeight: 600, color: '#93c5fd', marginBottom: 16, letterSpacing: '0.03em' }}>
       {title}
     </div>
@@ -233,7 +227,7 @@ function OverviewPage({ data }) {
         <StatCard Icon={TrendingUp}    label="Avg EII Score"      value={data.avgEii.toFixed(2)}                      sub="Event Impact Index"              color="#8b5cf6" />
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
+      <div className="dashboard-grid">
         <ChartCard title="Event Type Distribution">
           <ResponsiveContainer width="100%" height={260}>
             <PieChart>
@@ -259,7 +253,7 @@ function OverviewPage({ data }) {
         </ChartCard>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+      <div className="dashboard-grid">
         <ChartCard title="Road Closure Events">
           <ResponsiveContainer width="100%" height={220}>
             <PieChart>
@@ -293,7 +287,7 @@ function IncidentTypesPage({ data }) {
     <div>
       <SectionTitle Icon={Car} title="Incident Types & Causes" subtitle="Breakdown of what is causing traffic disruptions" />
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+      <div className="dashboard-grid">
         <ChartCard title="Incidents by Cause" span={2}>
           <ResponsiveContainer width="100%" height={340}>
             <BarChart data={data.eventCauses} layout="vertical" margin={{ left: 20, right: 30 }}>
@@ -354,7 +348,7 @@ function ManpowerPage({ data }) {
         <StatCard Icon={CheckCircle}  label="Min Deployed"      value={data.minManpower.toString()}           sub="Minimum personnel deployed"               color="#64748b" />
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+      <div className="dashboard-grid">
         <ChartCard title="Avg Manpower Required by Incident Type" span={2}>
           <ResponsiveContainer width="100%" height={320}>
             <BarChart data={data.manpowerByCause} margin={{ left: 10, right: 20 }}>
@@ -418,7 +412,7 @@ function BarricadePage({ data }) {
         <StatCard Icon={MapPin}      label="Top Corridor"            value={data.topCorridorName} sub={`${data.topCorridorQty.toLocaleString()} barricades total`}    color="#ef4444" />
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+      <div className="dashboard-grid">
         <ChartCard title="Barricade Quantity by Corridor" span={2}>
           <ResponsiveContainer width="100%" height={320}>
             <BarChart data={data.barricadeByCorridors} margin={{ left: 10, right: 20 }}>
@@ -477,7 +471,7 @@ function EIIPage({ data }) {
         <StatCard Icon={Activity}     label="Median EII"            value={data.medianEii.toFixed(2)}  sub="50th percentile"             color="#22c55e" />
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+      <div className="dashboard-grid">
         <ChartCard title="EII Severity Distribution">
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={data.eiiBuckets}>
@@ -816,7 +810,7 @@ export default function AnalyticsDashboard({ onClose }) {
             <div style={{ fontWeight: 700, fontSize: 15, color: '#e2e8f0', lineHeight: 1.2 }}>
               IMPACT Analytics Dashboard
             </div>
-            <div style={{ fontSize: 11, color: '#475569' }}>
+            <div className="dashboard-topbar-subtitle">
               Bengaluru Traffic Incident Dataset — {liveData.totalIncidents.toLocaleString()} Records {loading ? '(Loading...)' : '(Live)'}
             </div>
           </div>
@@ -839,16 +833,10 @@ export default function AnalyticsDashboard({ onClose }) {
         </button>
       </div>
 
-      <div style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
+      <div className="dashboard-body">
         {/* Sidebar */}
-        <div style={{
-          width: 210, minWidth: 210,
-          background: 'rgba(15,23,42,0.85)',
-          borderRight: '1px solid rgba(51,65,85,0.6)',
-          padding: '20px 12px',
-          display: 'flex', flexDirection: 'column', gap: 3
-        }}>
-          <div style={{
+        <div className="dashboard-sidebar">
+          <div className="sidebar-section-header" style={{
             fontSize: 10, color: '#475569',
             textTransform: 'uppercase', letterSpacing: '0.12em',
             marginBottom: 10, paddingLeft: 10
@@ -859,8 +847,8 @@ export default function AnalyticsDashboard({ onClose }) {
           {NAV_ITEMS.map(({ id, label, Icon }) => {
             const active = activePage === id;
             const divider = id === 'adddata' ? (
-              <div key="divider" style={{ margin: '8px 0 4px', borderTop: '1px solid rgba(51,65,85,0.5)', paddingTop: 8 }}>
-                <div style={{ fontSize: 10, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.12em', paddingLeft: 10, marginBottom: 2 }}>
+              <div key="divider" className="sidebar-divider" style={{ margin: '8px 0 4px', borderTop: '1px solid rgba(51,65,85,0.5)', paddingTop: 8 }}>
+                <div className="sidebar-section-header" style={{ fontSize: 10, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.12em', paddingLeft: 10, marginBottom: 2 }}>
                   Operations
                 </div>
               </div>
@@ -891,7 +879,7 @@ export default function AnalyticsDashboard({ onClose }) {
           })}
 
           {/* Dataset info card */}
-          <div style={{
+          <div className="sidebar-info-card" style={{
             marginTop: 'auto', padding: '12px 10px', borderRadius: 8,
             background: 'rgba(15,23,42,0.6)',
             border: '1px solid rgba(51,65,85,0.4)',
@@ -913,11 +901,7 @@ export default function AnalyticsDashboard({ onClose }) {
         </div>
 
         {/* Main content */}
-        <div style={{
-          flex: 1, overflowY: 'auto', padding: '28px 32px',
-          scrollbarWidth: 'thin',
-          scrollbarColor: 'rgba(51,65,85,0.6) transparent'
-        }}>
+        <div className="dashboard-content">
           {pages[activePage]}
         </div>
       </div>

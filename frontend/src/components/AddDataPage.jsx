@@ -161,7 +161,7 @@ function ManualEntryForm({ onSuccess }) {
     <div style={S.card}>
       <div style={S.sectionTitle}>Enter Incident Record</div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14, marginBottom: 14 }}>
+      <div className="form-fields-grid">
         <Field label="Event Type *">
           <select style={S.select} value={form.event_type} onChange={e => set('event_type', e.target.value)}>
             {EVENT_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
@@ -491,7 +491,7 @@ function RetrainPanel({ liveData, extraStats }) {
           )}
 
           {/* Score comparison grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
+          <div className="scores-grid">
             <ScoreDiff
               label={`Classifier Accuracy (threshold: ${result.threshold ?? 0.93})`}
               oldVal={result.old_scores?.classifier_acc}
