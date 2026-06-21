@@ -4,7 +4,7 @@ IMPACT is an AI-driven traffic decision-support system designed to forecast the 
 
 ---
 
-## 📌 Problem Statement
+##  Problem Statement
 
 In fast-growing cities, sudden disruptions—such as political rallies, sports games, religious processions, road construction, water-logging, or VIP movements—trigger catastrophic gridlocks. Today's traffic response suffers from three major flaws:
 1. **Unquantified Severity:** Control centers cannot anticipate the exact traffic volume delay and geographical footprint of a new incident.
@@ -13,7 +13,7 @@ In fast-growing cities, sudden disruptions—such as political rallies, sports g
 
 ---
 
-## 🚀 Key Features
+##  Key Features
 
 - **Event Severity Quantification:** Computes a custom **Event Impact Index (EII)** to immediately bucket events into Moderate, High, or Critical threat levels.
 - **Resource Forecasting Models:** High-accuracy Machine Learning models (Random Forest algorithms) forecast the exact traffic officers and barricades needed.
@@ -23,7 +23,7 @@ In fast-growing cities, sudden disruptions—such as political rallies, sports g
 
 ---
 
-## 🧮 Event Impact Index (EII) Formulation
+##  Event Impact Index (EII) Formulation
 
 The **Event Impact Index (EII)** ranges from $0$ to $100$ and is computed as a weighted combination of five traffic disruption indicators:
 
@@ -73,7 +73,7 @@ Determined by the incident cause based on historical congestion weight:
 
 ---
 
-## 💻 Setup Instructions
+## Setup Instructions
 
 ### Prerequisites
 - [Node.js](https://nodejs.org/) (v18+)
