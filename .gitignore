@@ -1,0 +1,22 @@
+# Virtual environment
+.venv/
+venv/
+ENV/
+
+# Python cache
+__pycache__/
+*.pyc
+api/__pycache__/
+
+# Environment variables & secrets
+.env
+api/.env
+frontend/.env
+.env.*
+
+# Local staging dataset files
+api/additional_data.xlsx
+
+# OS files
+.DS_Store
+Thumbs.db
